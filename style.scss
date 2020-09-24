@@ -1,0 +1,50 @@
+.events-row{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.single-event{
+
+  margin-bottom: 2rem;
+
+  .events-date{
+    border: 1px solid #000;
+    margin-right: 15px;
+    min-width: 7rem;
+    width: 7rem;
+    padding: 7px 0;
+    
+    .events-date-day,
+    .events-date-month,
+    .events-date-year{
+      text-align: center;
+      display: block;
+      line-height: 1.1em;
+    }
+
+    .events-date-month{
+      font-size: 0.8em;
+    }
+
+
+  }
+
+  .events-description{
+    width: 100%;
+    p{
+      margin: 0;
+    }
+  }
+
+  .events-meta{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+  }
+}
+
+
+
+

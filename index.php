@@ -14,10 +14,13 @@ include "includes/acf-setup.php";
 // Register Custom Post Type
 include "includes/hahn-event-type.php";
 
+add_action( 'init', 'hahn_event_init' );
 
-add_action( 'init', 'hahn_event__add_custom_shortcode' );
+function hahn_event_init() {
 
-function hahn_event__add_custom_shortcode() {
+    wp_register_style('hahn_events_css', plugins_url('style.css',__FILE__ ));
+    wp_enqueue_style('hahn_events_css');
+
     add_shortcode( 'hahn-events', 'hahn_event_shortcode' );
 
     function hahn_event_shortcode( $atts ){
@@ -63,7 +66,7 @@ function hahn_event__add_custom_shortcode() {
                 $query->the_post();
 
                 // open row
-                $buffer = $buffer.'<div class="events-row">';
+                $buffer = $buffer.'<div class="events-row single-event">';
 
                     // open event
                     $buffer = $buffer.'<div class="events-date">';
@@ -83,12 +86,12 @@ function hahn_event__add_custom_shortcode() {
                         $buffer = $buffer.'<p class="events-title">'.get_the_title().'</p>';
 
                         // open row
-                        $buffer = $buffer.'<div class="events-row">';
+                        $buffer = $buffer.'<div class="events-meta">';
 
                             $buffer = $buffer.'<i class="events-location">'.get_field("location").'</i>';
 
                             if( !empty(get_field("link")) ){
-                                $buffer = $buffer.'<a href="'.get_field("link").'" class="events-link">Fotos ansehen</a>';
+                                $buffer = $buffer.'<div><a href="'.get_field("link").'" class="events-link">Fotos ansehen</a></div>';
                             }
 
                         $buffer = $buffer.'</div>';
